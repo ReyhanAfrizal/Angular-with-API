@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form
+        #form="ngForm"
+        (submit)="onSubmit(form)"
+        class="border p-4 rounded shadow-sm bg-light"
+      >
+        <div class="form-group mb-3">
+          <label for="file">Document</label>
+          <input
+            #file
+            accept="image/*"
+            type="file"
+            (change)="upload($event)"
+            class="form-control"
+            ngModel
+            name="file"
+            id="file"
+          />
+        </div>
+        <button
+          [disabled]="form.invalid"
+          type="submit"
+          class="btn btn-primary w-100"
+        >
+          Upload<fa-icon [icon]="icons.upload" class="ms-2"></fa-icon>
+        </button>
+      </form>
+    </div>
+    <img src="{{ doc?.file }}" />
+  </div>
+</div>
